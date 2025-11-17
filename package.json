@@ -1,0 +1,41 @@
+{
+  "name": "@slateform/trainsy-db-schema",
+  "version": "0.0.1",
+  "private": true,
+  "homepage": "https://github.com/Slateform/trainsy-db-schema#readme",
+  "bugs": {
+    "url": "https://github.com/Slateform/trainsy-db-schema/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Slateform/trainsy-db-schema.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Troy Cooper <troy@slateform.co.uk> (https://slateform.co.uk/)",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "lint": "eslint 'src/**/*.{ts,js}' --fix"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "kysely": "^0.28.8",
+    "pg": "^8.16.3",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@types/pg": "^8.15.6",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.5.0",
+    "jiti": "^2.6.1",
+    "prettier": "^3.6.2",
+    "typescript-eslint": "^8.46.4"
+  }
+}
