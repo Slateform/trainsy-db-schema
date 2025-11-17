@@ -2,6 +2,7 @@
   "name": "@slateform/trainsy-db-schema",
   "version": "0.0.1",
   "private": true,
+  "description": "Database schemas for Trainsy.",
   "homepage": "https://github.com/Slateform/trainsy-db-schema#readme",
   "bugs": {
     "url": "https://github.com/Slateform/trainsy-db-schema/issues"
