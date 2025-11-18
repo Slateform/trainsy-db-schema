@@ -249,6 +249,7 @@ export interface ScheduleLocationTable {
   record_identity: string;
   location_tiploc: string;
   tiploc_instance: number | null;
+  location_sequence: number;
   working_arrival_time: string | null;
   public_arrival_time: string | null;
   working_departure_time: string | null;

@@ -266,6 +266,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('record_identity', 'text', (col) => col.notNull())
     .addColumn('location_tiploc', 'text', (col) => col.notNull())
     .addColumn('tiploc_instance', 'integer')
+    .addColumn('location_sequence', 'integer')
     .addColumn('working_arrival_time', 'time')
     .addColumn('public_arrival_time', 'time')
     .addColumn('working_departure_time', 'time')
