@@ -228,7 +228,7 @@ export interface ScheduleTable {
   business_sector: string | null;
   power_type: string | null;
   timing_load: string | null;
-  speed: string | null;
+  speed: number | null;
   operating_characteristics: string | null;
   train_class: string | null;
   sleepers: string | null;

@@ -239,7 +239,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('business_sector', 'text')
     .addColumn('power_type', 'text')
     .addColumn('timing_load', 'text')
-    .addColumn('speed', 'text')
+    .addColumn('speed', 'integer')
     .addColumn('operating_characteristics', 'text')
     .addColumn('train_class', 'text')
     .addColumn('sleepers', 'text')

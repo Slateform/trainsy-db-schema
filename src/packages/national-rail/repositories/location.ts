@@ -2,6 +2,11 @@ import { BatchOperationOptions, doOperationInBatches } from '../../../utils/tabl
 import { NationalRailDb } from '../db';
 import { MakeRequired } from '../../../utils/types';
 import { LocationUpdate, NewLocation } from '../types';
+import { sql } from 'kysely';
+
+export async function getAllStations(db: NationalRailDb) {
+  return await db.selectFrom('location').where('location.naptan_common_name', 'is not', null).selectAll().execute();
+}
 
 export async function findLocationByNlc(db: NationalRailDb, nlc: number) {
   return await db.selectFrom('location').where('nlc', '=', nlc).selectAll().executeTakeFirst();
@@ -33,6 +38,29 @@ export async function findLocationByThreeAlpha(db: NationalRailDb, threeAlpha: s
 
 export async function findLocationByUic(db: NationalRailDb, uic: string) {
   return await db.selectFrom('location').where('uic', '=', uic).selectAll().executeTakeFirst();
+}
+
+export async function findNearestStation(
+  db: NationalRailDb,
+  latitude: number,
+  longitude: number
+) {
+  return await db
+    .selectFrom("location")
+    .selectAll()
+    .select(() =>
+      sql<number>`
+        6371 * acos(
+          cos(radians(${latitude}))
+          * cos(radians(location.bplan_latitude))
+          * cos(radians(location.bplan_longitude) - radians(${longitude}))
+          + sin(radians(${latitude})) * sin(radians(location.bplan_latitude))
+        )
+      `.as("distance_km")
+    )
+    .orderBy(sql`distance_km`)
+    .limit(1)
+    .executeTakeFirst();
 }
 
 export async function upsertLocations(db: NationalRailDb, locations: NewLocation[] | NewLocation, options: BatchOperationOptions = {}) {
